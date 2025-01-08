@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    GameManager gameManager;
+    protected GameManager gameManager;
 
     protected abstract void OnCollect(GameObject player, GameManager manager);
 
@@ -11,7 +11,7 @@ public abstract class PowerUp : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>(); 
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>())
         {

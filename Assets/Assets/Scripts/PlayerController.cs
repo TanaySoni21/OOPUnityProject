@@ -3,7 +3,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float verticalInput;
-    [SerializeField] float speed = 10.0f;
+    [SerializeField] protected float speed = 10.0f;
+
+    public float Speed 
+    {
+        get { return speed; }
+        set { speed = Mathf.Max(10.0f, value); }
+    }
+    public GameObject indicator;
 
     GameObject focalPoint;
     Rigidbody rb;
@@ -19,5 +26,6 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         rb.AddForce(focalPoint.transform.forward * verticalInput * speed);
+        indicator.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z) ;
     }
 }
