@@ -11,7 +11,7 @@ public class MissilesPowerUp : PowerUp
         {
             Vector3 enemyToPlayerNormal = (enemy.transform.position - player.transform.position).normalized;
             Vector3 projectileSpawnPos = player.transform.position + enemyToPlayerNormal * offSet;
-            Quaternion projectileRotation = Quaternion.LookRotation(Vector3.up, enemyToPlayerNormal); //Quaternion.Euler(new Vector3(0, 0, 90.0f));
+            Quaternion projectileRotation = Quaternion.LookRotation(Vector3.up, enemyToPlayerNormal); 
             Projectile projectileInstance = Instantiate(projectile, projectileSpawnPos, projectileRotation);
             projectileInstance.SetTarget(enemy);
         }
