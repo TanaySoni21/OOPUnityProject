@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Enemy> enemies;
     [SerializeField] int level = 1;
 
-    Enemy[] activeEnemies;
+    public Enemy[] activeEnemies;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0;i<level;i++)
         {
-            Vector3 randomSpawnPos = new Vector3 (Random.Range(0, 9), 2, Random.Range(0, 9));
+            Vector3 randomSpawnPos = new Vector3 (Random.Range(-9, 9), 2, Random.Range(-9, 9));
             Enemy enemy = enemies[Random.Range(0, enemies.Count)];
             Instantiate(enemy, randomSpawnPos, enemy.transform.rotation);
         }
