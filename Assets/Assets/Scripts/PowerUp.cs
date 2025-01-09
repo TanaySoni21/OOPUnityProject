@@ -19,4 +19,6 @@ public abstract class PowerUp : MonoBehaviour
             Destroy(gameObject); 
         }
     }
+
+    public virtual void DeactivateSelf() { }
 }
