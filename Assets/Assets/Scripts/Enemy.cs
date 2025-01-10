@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Rigidbody))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] protected float speed = 10.0f;
@@ -15,7 +16,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
     GameObject player;
     float yBound = -10.0f;
 
