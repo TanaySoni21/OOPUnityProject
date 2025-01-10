@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] List<Enemy> enemies;
+    [SerializeField] List<PowerUp> powerUps;
     [SerializeField] int level = 1;
 
     public Enemy[] activeEnemies;
@@ -29,9 +30,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0;i<level;i++)
         {
-            Vector3 randomSpawnPos = new Vector3 (Random.Range(-9, 9), 2, Random.Range(-9, 9));
+            Vector3 randomSpawnPosEnemy = new Vector3 (Random.Range(-9, 9), 2, Random.Range(-9, 9));
             Enemy enemy = enemies[Random.Range(0, enemies.Count)];
-            Instantiate(enemy, randomSpawnPos, enemy.transform.rotation);
+            Instantiate(enemy, randomSpawnPosEnemy, enemy.transform.rotation);
         }
+
+        Vector3 randomSpawnPos = new Vector3(Random.Range(-9, 9), 0.2f, Random.Range(-9, 9));
+        PowerUp powerUp = powerUps[Random.Range(0, powerUps.Count)];
+        Instantiate(powerUp, randomSpawnPos, powerUp.transform.rotation);
     }
 }
