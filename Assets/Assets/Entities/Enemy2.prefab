@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  level: 2
   enemyPushForce: 6.5
 --- !u!54 &6768736594300783692
 Rigidbody:

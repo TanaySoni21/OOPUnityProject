@@ -16,20 +16,32 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    [SerializeField] protected int level = 1;
+    public int Level
+    {
+        get { return level; }
+        set { level = Mathf.Max(1, value); }
+    }
+
     protected Rigidbody rb;
     GameObject player;
     float yBound = -10.0f;
+    GameManager gameManager;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();   
     }
 
     private void Update()
     {
-        FollowPlayer();
-        DestroyOutOfBounds();
+        if (!gameManager.isGameOver)
+        {
+            FollowPlayer();
+            DestroyOutOfBounds();
+        }
     }
 
     void FollowPlayer()

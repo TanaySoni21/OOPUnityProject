@@ -241,7 +241,11 @@ MonoBehaviour:
   - {fileID: 9017227645122361851, guid: 9f83b6da37fff3c4dabf28996d9e96a2, type: 3}
   - {fileID: 1389654534138051951, guid: 4a0166211606b0541a67846e185c3978, type: 3}
   - {fileID: 3458688777508418651, guid: 8647ad9b93bebf74e93d6072b27e91c2, type: 3}
-  powerUps: []
+  powerUps:
+  - {fileID: 2901984168615608020, guid: 4b79f9c8d4ea09f41acf610a549942a1, type: 3}
+  - {fileID: 795239104615942496, guid: ca42b008c9c033d458db45bb2ce99156, type: 3}
+  - {fileID: 6927349421254984439, guid: 8b98ec31c83605f4a8844940c222a378, type: 3}
+  - {fileID: 5451702105083515810, guid: 3479e61cd04802a4e91991c7a1e2de2f, type: 3}
   level: 1
   activeEnemies: []
 --- !u!4 &292666750

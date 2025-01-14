@@ -4,6 +4,12 @@ public class Enemy2 : Enemy
 {
     [SerializeField] float enemyPushForce;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        Speed = 2.0f;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<PlayerController>())

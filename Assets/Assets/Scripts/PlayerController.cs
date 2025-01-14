@@ -17,9 +17,11 @@ public class PlayerController : MonoBehaviour
 
     GameObject focalPoint;
     Rigidbody rb;
+    GameManager gameManager;
 
     private void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         focalPoint = GameObject.Find("Focal Point");
         rb = GetComponent<Rigidbody>();
     }
@@ -29,7 +31,9 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         rb.AddForce(focalPoint.transform.forward * verticalInput * speed);
-        indicator.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z) ;
+        indicator.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
+
+        DeletOutOfBounds();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -39,5 +43,15 @@ public class PlayerController : MonoBehaviour
             Vector3 normal = (collision.gameObject.transform.position - gameObject.transform.position).normalized;
             collision.rigidbody.AddForce(normal * strengthPowerUpforce, ForceMode.Impulse);
         } 
+    }
+
+    void DeletOutOfBounds()
+    {
+        if (transform.position.y < -10.0f)
+        {
+            gameManager.GameOver();
+            Destroy(gameObject);
+            Destroy(indicator);
+        }
     }
 }
