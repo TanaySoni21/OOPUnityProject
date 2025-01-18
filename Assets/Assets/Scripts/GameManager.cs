@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using UnityEditor.SearchService;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,14 +8,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<Enemy> enemies;
     [SerializeField] List<PowerUp> powerUps;
     [SerializeField] int level = 1;
+    [SerializeField] TextMeshProUGUI highestLevelText;
 
     public bool isGameOver = false;
 
     public Enemy[] activeEnemies;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SpawnEnemies();
+        StorageManager.Instance.LoadLevelData();
+
+        Debug.Log(StorageManager.Instance.highestLevel);
+
+        highestLevelText.text = $"Highest level: {StorageManager.Instance.highestLevel}"; 
     }
 
     // Update is called once per frame
@@ -69,5 +75,10 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         SceneManager.LoadScene(2);
+
+        if(StorageManager.Instance.highestLevel < level)
+        {
+            StorageManager.Instance.SaveLevelData(level);
+        }
     }
 }

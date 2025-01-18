@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         rb.AddForce(focalPoint.transform.forward * verticalInput * speed);
-        indicator.transform.position = new Vector3(transform.position.x, -0.5f, transform.position.z);
+        indicator.transform.position = transform.position + new Vector3(0, -0.5f, 0);
 
         DeletOutOfBounds();
     }
